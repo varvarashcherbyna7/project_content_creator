@@ -23,6 +23,7 @@
         "gulp-sourcemaps": "^1.6.0",
         "imagemin-giflossy": "^5.1.10",
         "jquery": "^3.6.0",
+        "minify": "^7.0.2",
         "sass": "^1.35.2"
     },
     "devDependencies": {
