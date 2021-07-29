@@ -38,7 +38,7 @@ function css() {
 }
 
 function img() {
-    return src('src/img/**/*.{gif,png,jpg,svg}')
+    return src('src/img/**/*.{gif, png, jpg, svg}')
         .pipe(cache(imagemin([
                 imageminGiflossy({
                     optimizationLevel: 3,
