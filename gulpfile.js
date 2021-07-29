@@ -5,6 +5,7 @@ const csso = require('gulp-csso');
 const include = require('gulp-file-include');
 const htmlmin = require('gulp-htmlmin');
 const imagemin = require('gulp-imagemin');
+const image = require('gulp-image');
 const babel = require('gulp-babel');
 const sourcemaps = require('gulp-sourcemaps');
 const del = require('del');
@@ -37,15 +38,42 @@ function css() {
         .pipe(gulp.dest('build/css'))
 }
 
+// function img() {
+//     return src('src/img/**/*.{gif, png, jpg, svg}')
+//         .pipe(cache(imagemin([
+//                 imageminGiflossy({
+//                     optimizationLevel: 3,
+//                     optimize: 3, //keep-empty: Preserve empty transparent frames
+//                     lossy: 2
+//                 }),
+//             ]))
+//             .pipe(dest('build/img')))
+// }
+
 function img() {
-    return src('src/img/**/*.{gif, png, jpg, svg}')
-        .pipe(cache(imagemin([
-                imageminGiflossy({
-                    optimizationLevel: 3,
-                    optimize: 3, //keep-empty: Preserve empty transparent frames
-                    lossy: 2
-                }),
-            ]))
+    return src('src/img/**/*.*')
+        .pipe(cache(
+                imagemin([
+                    image({
+                        // pngquant: true,
+                        // optipng: true,
+                        // zopflipng: true,
+                        // jpegRecompress: true,
+                        // mozjpeg: true,
+                        // gifsicle: true,
+                        // svgo: true,
+                        // concurrent: 10,
+                        // quiet: true
+                        optipng: ['-i 1', '-strip all', '-fix', '-o7', '-force'],
+                        pngquant: ['--speed=1', '--force', 256],
+                        zopflipng: ['-y', '--lossy_8bit', '--lossy_transparent'],
+                        jpegRecompress: ['--strip', '--quality', 'medium', '--min', 40, '--max', 80],
+                        mozjpeg: ['-optimize', '-progressive'],
+                        gifsicle: ['--optimize'],
+                        svgo: ['--enable', 'cleanupIDs', '--disable', 'convertColors']
+                    })
+                ])
+            )
             .pipe(dest('build/img')))
 }
 

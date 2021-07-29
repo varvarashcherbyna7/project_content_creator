@@ -14,6 +14,10 @@ body {
     background: linear-gradient(to top, #a3795f, #012754);
 }
 
+.descriptionHide {
+    display: none;
+}
+
 h2 {
     font-size: 32px;
     margin: 0 0 15px 2%;
