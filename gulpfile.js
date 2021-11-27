@@ -93,7 +93,6 @@ exports.build = series(clear, css, html, img)
 exports.serve = series(clear, css, html, img, serve)
 exports.clear = clear
 
-
 /**
  * Push build to gh-pages
  */
