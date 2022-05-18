@@ -60,7 +60,7 @@ function img() {
                         // zopflipng: true,
                         // jpegRecompress: true,
                         // mozjpeg: true,
-                        // gifsicle: true,
+                        gifsicle: true,
                         // svgo: true,
                         // concurrent: 10,
                         // quiet: true
