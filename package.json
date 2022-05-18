@@ -27,6 +27,7 @@
         "gulp-sourcemaps": "^1.6.0",
         "imagemin-giflossy": "^5.1.10",
         "jquery": "^3.6.0",
+        "n": "^8.2.0",
         "npm": "^7.24.2",
         "sass": "^1.35.2"
     },
