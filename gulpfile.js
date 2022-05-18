@@ -52,28 +52,18 @@ function css() {
 
 function img() {
     return src('src/img/**/*.*')
-        .pipe(cache(
-                imagemin([
-                    image({
-                        // pngquant: true,
-                        // optipng: true,
-                        // zopflipng: true,
-                        // jpegRecompress: true,
-                        // mozjpeg: true,
-                        // gifsicle: true,
-                        // svgo: true,
-                        // concurrent: 10,
-                        // quiet: true
-                        optipng: ['-i 1', '-strip all', '-fix', '-o7', '-force'],
-                        pngquant: ['--speed=1', '--force', 256],
-                        zopflipng: ['-y', '--lossy_8bit', '--lossy_transparent'],
-                        jpegRecompress: ['--strip', '--quality', 'medium', '--min', 40, '--max', 80],
-                        mozjpeg: ['-optimize', '-progressive'],
-                        gifsicle: ['--optimize'],
-                        svgo: ['--enable', 'cleanupIDs', '--disable', 'convertColors']
-                    })
-                ])
-            )
+        .pipe(
+            imagemin([
+                imagemin.gifsicle({ interlaced: true }),
+                imagemin.mozjpeg({ quality: 75, progressive: true }),
+                imagemin.optipng({ optimizationLevel: 5 }),
+                imagemin.svgo({
+                    plugins: [
+                        { removeViewBox: true },
+                        { cleanupIDs: false }
+                    ]
+                })
+            ])
             .pipe(dest('build/img')))
 }
 
