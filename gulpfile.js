@@ -50,13 +50,6 @@ function img() {
             .pipe(dest('build/img')));
 }
 
-// function img() {
-//     return src('src/img/**/*.*')
-//         .pipe(imagemin())
-//         .pipe(dest('build/img'))
-// }
-
-
 function clear() {
     return del('build')
 }
@@ -76,15 +69,15 @@ exports.clear = clear
 /**
  * Push build to gh-pages
  */
-gulp.task('deploy', function() {
-    return gulp.src("./build/**/*")
-        .pipe(deploy())
-});
+// gulp.task('deploy', function() {
+//     return gulp.src("./build/**/*")
+//         .pipe(deploy())
+// });
 
-// gulp.task('deploy', async function() {
-//     gulp.src('./build/**/*')
-//         .pipe(netlify({
-//             site_id: '613869e6-36a6-43fa-9835-3fb2350f3117',
-//             access_token: 'MP-xN641aog6yaQFMjFiRB7BpwmiIYtGiaE27uRpEEU'
-//         }))
-// })
+gulp.task('deploy', async function() {
+    gulp.src('./build/**/*')
+        .pipe(netlify({
+            site_id: '613869e6-36a6-43fa-9835-3fb2350f3117',
+            access_token: 'MP-xN641aog6yaQFMjFiRB7BpwmiIYtGiaE27uRpEEU'
+        }))
+})
