@@ -39,7 +39,7 @@ function css() {
 }
 
 function img() {
-    return src('src/img/**/*.{gif, png, jpg, svg}')
+    return src('src/img/*/*.*')
         .pipe(cache(imagemin([
                 imageminGiflossy({
                     optimizationLevel: 3,
