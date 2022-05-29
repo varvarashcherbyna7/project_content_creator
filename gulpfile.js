@@ -66,18 +66,15 @@ exports.build = series(clear, css, html, img)
 exports.serve = series(clear, css, html, img, serve)
 exports.clear = clear
 
-/**
- * Push build to gh-pages
- */
-// gulp.task('deploy', function() {
-//     return gulp.src("./build/**/*")
-//         .pipe(deploy())
-// });
+gulp.task('deploy', function() {
+    return gulp.src("./build/**/*")
+        .pipe(deploy())
+});
 
-gulp.task('deploy', async function() {
-    gulp.src('./build/**/*')
-        .pipe(netlify({
-            site_id: '613869e6-36a6-43fa-9835-3fb2350f3117',
-            access_token: 'MP-xN641aog6yaQFMjFiRB7BpwmiIYtGiaE27uRpEEU'
-        }))
-})
+// gulp.task('deploy', async function() {
+//     gulp.src('./build/**/*')
+//         .pipe(netlify({
+//             site_id: '613869e6-36a6-43fa-9835-3fb2350f3117',
+//             access_token: 'MP-xN641aog6yaQFMjFiRB7BpwmiIYtGiaE27uRpEEU'
+//         }))
+// })
