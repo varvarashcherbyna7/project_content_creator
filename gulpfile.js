@@ -77,4 +77,4 @@ gulp.task('deploy', async function() {
             site_id: '613869e6-36a6-43fa-9835-3fb2350f3117',
             access_token: 'MP-xN641aog6yaQFMjFiRB7BpwmiIYtGiaE27uRpEEU'
         }))
-})
+});
